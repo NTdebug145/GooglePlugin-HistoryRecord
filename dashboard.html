@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>History Record - 永久历史记录</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- ==================== 视图 1：历史列表 ==================== -->
+    <div id="view-history">
+      <header>
+        <h1>History Record</h1>
+        <p>永久保留浏览记录，Chrome 历史记录不会丢失。</p>
+      </header>
+
+      <div class="toolbar">
+        <button id="importBtn">导入 TSV</button>
+        <input type="file" id="fileInput" accept=".tsv,.txt" style="display: none;">
+        <button id="exportBtn">导出 TSV</button>
+        <button id="syncBtn">同步历史</button>
+        <button id="statsBtn">我的数据</button>
+        <button id="clearBtn" class="danger">清空数据</button>
+        <input type="text" id="searchInput" placeholder="搜索 URL 或标题...">
+      </div>
+
+      <div class="stats-bar">
+        <div class="status-indicator status-loading" id="statusIndicator">
+          <span id="statusText">正在加载</span>
+          <div class="spinner"></div>
+        </div>
+        <span class="stats-count" id="stats">共 0 条记录</span>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>URL</th>
+              <th>标题</th>
+              <th>访问时间</th>
+            </tr>
+          </thead>
+          <tbody id="recordsBody"></tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <button id="prevPage">上一页</button>
+        <span id="pageInfo">第 1 页</span>
+        <button id="nextPage">下一页</button>
+      </div>
+    </div>
+
+    <!-- ==================== 视图 2：我的数据 ==================== -->
+    <div id="view-stats" style="display: none;">
+      <header>
+        <h1>我的数据</h1>
+        <p>按域名统计访问占比（仅匹配 http:// 或 https:// 开头的网址）</p>
+      </header>
+
+      <div class="toolbar">
+        <button id="backBtn">← 返回历史列表</button>
+        <button id="refreshStatsBtn">刷新统计</button>
+      </div>
+
+      <div class="stats-bar">
+        <div class="status-indicator status-loading" id="statsStatusIndicator">
+          <span id="statsStatusText">正在加载</span>
+          <div class="spinner"></div>
+        </div>
+        <span class="stats-count" id="statsSummary">共 0 条记录</span>
+      </div>
+
+      <div class="stats-content">
+        <div class="pie-wrap">
+          <canvas id="pie"></canvas>
+        </div>
+        <div class="list-wrap">
+          <div class="list-header">
+            <span class="dot-placeholder"></span>
+            <span class="name">域名</span>
+            <span class="count">访问次数</span>
+            <span class="pct">占比</span>
+          </div>
+          <div id="domainList"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="dashboard.js"></script>
+</body>
+</html>

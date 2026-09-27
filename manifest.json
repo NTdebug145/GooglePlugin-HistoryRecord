@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "History Record - 永久历史记录",
+  "version": "1.0",
+  "description": "永久保留所有浏览记录，支持导入导出TSV。",
+  "permissions": [
+    "history",
+    "unlimitedStorage",
+    "alarms"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "History Record"
+  },
+  "options_page": "dashboard.html"
+}
